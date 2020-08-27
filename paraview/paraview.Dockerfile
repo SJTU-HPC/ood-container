@@ -22,6 +22,12 @@ RUN yum install -y \
 
 FROM centos:8
 
+RUN yum install -y \
+        libgomp \
+        libXt \
+        libGLU && \
+    rm -rf /var/cache/yum/*
+
 COPY --from=build /opt/paraview /opt/paraview
 ENV PATH=/opt/paraview/bin:$PATH \
     LD_LIBRARY_PATH=/opt/paraview/lib:$LD_LIBRARY_PATH \

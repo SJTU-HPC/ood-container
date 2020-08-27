@@ -19,6 +19,13 @@ BootStrap: docker
 From: centos:8
 
 # ParaView 5.8.1 (https://www.paraview.org/download/)
+%post
+    yum install -y \
+        libgomp \
+        libXt \
+        libGLU
+    rm -rf /var/cache/yum/*
+
 %files from build
     /opt/paraview /opt/paraview
 %environment
