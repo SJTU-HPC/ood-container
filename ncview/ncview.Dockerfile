@@ -1,10 +1,7 @@
-BootStrap: docker
 FROM centos:7
 
 # ncview
-%post
-    yum install -y \
-        epel-release \
-        ncview && \
+RUN yum install -y epel-release && \
+    yum install -y ncview && \
     rm -rf /var/cache/yum/*
 
