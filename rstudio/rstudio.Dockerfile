@@ -49,6 +49,8 @@ RUN apt-get update && \
         libpng-dev \
         curl \
         perl \
+        tcl \
+        tk \
         liblzma-dev && \
     echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
     locale-gen en_US.utf8 && \
@@ -108,7 +110,6 @@ RUN apt-get update && \
     echo "options(repos = c(CRAN='$MRAN'), download.file.method = 'libcurl')" >> /usr/local/lib/R/etc/Rprofile.site && \
     ## Clean up from R source install
     rm -rf /var/tmp/R* && \
-    apt-get remove --purge -y ${BUILDDEPS} && \
     apt-get autoremove -y && \
     apt-get autoclean -y && \
     rm -rf /var/lib/apt/lists/*
@@ -125,6 +126,8 @@ RUN apt-get update && \
         git \
         libapparmor1 \
         libclang-dev \
+        proj-bin \
+        libproj-dev \
         libcurl4-openssl-dev \
         libedit2 \
         libssl-dev \
@@ -136,6 +139,8 @@ RUN apt-get update && \
         sudo \
         pkg-config \
         libxml2-dev \
+        libcairo2-dev  \
+        libxt-dev \
         jags \
         openjdk-11-jdk \
         wget && \
